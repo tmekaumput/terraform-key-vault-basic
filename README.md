@@ -1,6 +1,7 @@
 ## Terraform Key Vault Basic Profile
 
-Very bare minimum of Azure Key Vault configuration
+- Very bare minimum of Azure Key Vault configuration
+- Adding Log Analytics for Monitoring
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
