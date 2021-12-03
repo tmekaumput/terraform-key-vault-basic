@@ -102,7 +102,7 @@ resource "azurerm_key_vault" "keyvault" {
 }
 
 resource "azurerm_log_analytics_workspace" "ds-kv" {
-  name                = "${var.friendly_prefix}-la-ws-kv"
+  name                = "${var.friendly_prefix}-wskv"
   location            = azurerm_resource_group.keyvault.location
   resource_group_name = azurerm_resource_group.keyvault.name
   sku                 = "PerGB2018"
@@ -136,7 +136,7 @@ resource "azurerm_monitor_diagnostic_setting" "ds-kv" {
 }
 
 resource "azurerm_log_analytics_solution" "la-sol-kv" {
-  solution_name         = "${var.friendly_prefix}-la-solution"
+  solution_name         = "${var.friendly_prefix}sol"
   location              = azurerm_resource_group.keyvault.location
   resource_group_name   = azurerm_resource_group.keyvault.name
   workspace_resource_id = azurerm_log_analytics_workspace.ds-kv.id
@@ -146,4 +146,6 @@ resource "azurerm_log_analytics_solution" "la-sol-kv" {
     publisher = "Microsoft"
     product   = "OMSGallery/KeyVaultAnalytics"
   }
+
+  depends_on = [azurerm_monitor_diagnostic_setting.ds-kv]
 }
