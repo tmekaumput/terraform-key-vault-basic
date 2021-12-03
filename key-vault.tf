@@ -136,7 +136,7 @@ resource "azurerm_monitor_diagnostic_setting" "ds-kv" {
 }
 
 resource "azurerm_log_analytics_solution" "la-sol-kv" {
-  solution_name         = "${var.friendly_prefix}sol"
+  solution_name         = "KeyVaultAnalytics"
   location              = azurerm_resource_group.keyvault.location
   resource_group_name   = azurerm_resource_group.keyvault.name
   workspace_resource_id = azurerm_log_analytics_workspace.ds-kv.id
