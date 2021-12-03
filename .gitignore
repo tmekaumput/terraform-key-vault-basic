@@ -29,3 +29,6 @@ examples/*/*.lock*
 *.rli*
 *.pfx*
 work
+
+# Credentials
+credentials.json
